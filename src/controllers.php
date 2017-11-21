@@ -19,11 +19,11 @@ $app->get('/', function () use ($app) {
 $app->get('/login', function () use ($app) {
     return $app['twig']->render('login.html.twig');
 
-
 })
+
 ->bind('login');
 
-    $app->post('/login', function (Request $request) use ($app) {
+$app->post('/login', function (Request $request) use ($app) {
 
     //    $login = false;
     $name = $request->get('name');
@@ -43,26 +43,8 @@ $app->get('/login', function () use ($app) {
     }
 });
 
-
-
-
-
-//    $user = $app['password']
-
-    if ($login) {
-        $app['session']->set('is_logged', 1);
-        $app['session']->set('user', ['name' => $name]);
-
-        return $app->redirect('/');
-    }
-
-    return $app['twig']->render('login.html.twig', [
-        'name' => $name
-    ]);
-
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     return new Response($e->getMessage());
-
 
     if ($app['debug']) {
         return;
