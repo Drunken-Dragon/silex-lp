@@ -18,6 +18,5 @@ $console
     ->setDescription('My command description')
     ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
         // do something
-    }
-    );
+    });
 return $console;

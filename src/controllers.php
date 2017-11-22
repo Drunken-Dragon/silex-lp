@@ -12,8 +12,7 @@ $app->get('/', function () use ($app) {
     } else {
             return $app->redirect('/login');
     }
-}
-)
+})
 ->bind('index');
 
 $app->get('/login', function () use ($app) {
@@ -38,8 +37,7 @@ $app->post('/login', function (Request $request) use ($app) {
     } else {
         return $app->redirect('/login');
     }
-}
-);
+});
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
 
@@ -55,5 +53,4 @@ $app->error(function (\Exception $e, Request $request, $code) use ($app) {
         'errors/default.html.twig',
     );
     return new Response($app['twig']->resolveTemplate($templates)->render(array('code' => $code)), $code);
-}
-);
+});
