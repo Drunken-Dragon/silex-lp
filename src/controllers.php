@@ -6,11 +6,10 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Silex\Provider\FormServiceProvider;
 
 $app->get('/', function () use ($app) {
-
     if (($app['session']->get('is_logged')) === 1) {
-            return $app['twig']->render('index.html.twig');
+    return $app['twig']->render('index.html.twig');
     } else {
-            return $app->redirect('/login');
+    return $app->redirect('/login');
     }
 })
 ->bind('index');
@@ -21,13 +20,12 @@ $app->get('/login', function () use ($app) {
 ->bind('login');
 
 $app->post('/login', function (Request $request) use ($app) {
-
     $name = $request->get('name');
     $password = $request->get('password');
     $user = $app['db']->fetchAssoc('SELECT * FROM users WHERE name = ?', [$name]);
 
     if (password_verify($password, $user['password'])) {
-        if (($app['session']->get('is_logged')) != 1) {
+        if ($app['session']->get('is_logged') != 1) {
             $app['session']->set('is_logged', 1);
             $app['session']->set('user', ['name' => $name]);
             $app['session']->start();
@@ -40,7 +38,6 @@ $app->post('/login', function (Request $request) use ($app) {
 });
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
-
     if ($app['debug']) {
         return new Response($e->getMessage());
     }
