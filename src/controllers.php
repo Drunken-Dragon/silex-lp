@@ -7,9 +7,9 @@ use Silex\Provider\FormServiceProvider;
 
 $app->get('/', function () use ($app) {
     if (($app['session']->get('is_logged')) === 1) {
-    return $app['twig']->render('index.html.twig');
+        return $app['twig']->render('index.html.twig');
     } else {
-    return $app->redirect('/login');
+        return $app->redirect('/login');
     }
 })
 ->bind('index');
