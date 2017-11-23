@@ -28,7 +28,6 @@ $app->post('/login', function (Request $request) use ($app) {
         if ($app['session']->get('is_logged') != 1) {
             $app['session']->set('is_logged', 1);
             $app['session']->set('user', ['name' => $name]);
-            $app['session']->start();
 
             return $app->redirect('/');
         }
