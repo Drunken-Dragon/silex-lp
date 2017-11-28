@@ -12,30 +12,35 @@ $app->match('/form', function (Request $request) use ($app) {
     // some default data for when the form is displayed the first time
     $data = array(
         'name' => 'Your name',
-        'email' => 'Your email',
+        'password' => 'Your password',
     );
 
     $form = $app['form.factory']->createBuilder(FormType::class, $data)
         ->add('name')
-        ->add('email')
-        ->add('billing_plan', ChoiceType::class, array(
-            'choices' => array('free' => 1, 'small business' => 2, 'corporate' => 3),
-            'expanded' => true,
-        ))
-        ->add('submit', SubmitType::class, [
-            'label' => 'Save',
-        ])
+        ->add('password')
+
         ->getForm();
 
     $form->handleRequest($request);
 
     if ($form->isValid()) {
-        $data = $form->getData();
+//        $data = $form->getData();
+        $name = $request->get('name');
+        $password = $request->get('password');
+        $user = $app['db']->fetchAll('SELECT * FROM users WHERE name = ?', [$name]);
 
-        // do something with the data
+        if (password_verify($password, $user['password'])) {
+            if ($app['session']->get('is_logged') != 1) {
+                $app['session']->set('is_logged', 1);
+                $app['session']->set('user', ['name' => $name]);
 
+                return $app->redirect('/');
+            }
+        } else {
+            return $app->redirect('/login');
+        }
         // redirect somewhere
-        return $app->redirect('...');
+//        return $app->redirect('...');
     }
 
     // display the form
