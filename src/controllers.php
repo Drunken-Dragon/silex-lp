@@ -18,21 +18,18 @@ $app->match('/form', function (Request $request) use ($app) {
     $form = $app['form.factory']->createBuilder(FormType::class, $data)
         ->add('name')
         ->add('password')
-
         ->getForm();
 
     $form->handleRequest($request);
 
     if ($form->isValid()) {
-//        $data = $form->getData();
-        $name = $request->get('name');
-        $password = $request->get('password');
-        $user = $app['db']->fetchAll('SELECT * FROM users WHERE name = ?', [$name]);
+        $data = $form->getData();
+        $user = $app['db']->fetchAll('SELECT * FROM users WHERE name = ?', [$data['name']]);
 
-        if (password_verify($password, $user['password'])) {
+        if (password_verify($data['password'], $user[0]['password'])) {
             if ($app['session']->get('is_logged') != 1) {
                 $app['session']->set('is_logged', 1);
-                $app['session']->set('user', ['name' => $name]);
+                $app['session']->set('user', ['name' => $data['name']]);
 
                 return $app->redirect('/');
             }
