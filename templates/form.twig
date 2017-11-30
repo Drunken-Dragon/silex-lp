@@ -1,5 +1,15 @@
-<form action="#" method="post">
-    {{ form_widget(form) }}
+{% extends 'layout.html.twig' %}
 
-    <input type="submit" name="submit" />
-</form>
+{% block content %}
+<div class="container" style="margin-top: 100px">
+    <div class="row justify-content-center">
+        <div class="col-md-6" align="center">
+            <h2>Please sign in</h2>
+                <form action="#" method="post">
+                    {{ form_widget(form) }}
+                    <input class="btn btn-primary" type="submit" name="submit" value="Sign in"><br>
+                </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

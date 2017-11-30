@@ -34,6 +34,7 @@ $app->register(new \Silex\Provider\DoctrineServiceProvider(), [
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
     // add custom globals, filters, tags, ...
 
+
     return $twig;
 });
 
