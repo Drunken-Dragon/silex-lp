@@ -15,6 +15,12 @@ $app->register(new HttpFragmentServiceProvider());
 $app->register(new Silex\Provider\SessionServiceProvider());
 $app->register(new FormServiceProvider());
 $app->register(new Silex\Provider\LocaleServiceProvider());
+$app->register(new Silex\Provider\TwigServiceProvider(), array(
+    'twig.path' => array(
+        __DIR__.'/views',
+        __DIR__.'/../vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/Resources/views/Form'
+    )
+));
 $app->register(new Silex\Provider\TranslationServiceProvider(), [
     'locale_fallbacks' => ['en'],
 ]);
@@ -32,8 +38,10 @@ $app->register(new \Silex\Provider\DoctrineServiceProvider(), [
     ]
 ]);
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
-    // add custom globals, filters, tags, ...
-
+//    $twig->addExtension(new \Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapIconExtension);
+    $twig->addExtension(new \Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension);
+    $twig->addExtension(new \Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapBadgeExtension);
+    $twig->addExtension(new \Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension);
 
     return $twig;
 });
