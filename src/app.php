@@ -17,6 +17,7 @@ $app->register(new Silex\Provider\SessionServiceProvider());
 $app->register(new FormServiceProvider());
 $app->register(new Silex\Provider\LocaleServiceProvider());
 $app->register(new CsrfServiceProvider());
+$app->register(new Silex\Provider\ValidatorServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => array(
         __DIR__.'/views',
