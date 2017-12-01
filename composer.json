@@ -23,7 +23,8 @@
         "symfony/twig-bridge": "^3.3",
         "symfony/validator": "^3.3",
         "doctrine/dbal": "^2.5",
-        "braincrafted/bootstrap-bundle": "dev-master"
+        "braincrafted/bootstrap-bundle": "dev-master",
+        "symfony/security-csrf": "^3.4"
     },
     "autoload": {
         "psr-0": { "": "src/" }

@@ -6,6 +6,7 @@ use Silex\Provider\TwigServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\FormServiceProvider;
+use Silex\Provider\CsrfServiceProvider;
 
 $app = new Application();
 $app->register(new ServiceControllerServiceProvider());
@@ -15,6 +16,7 @@ $app->register(new HttpFragmentServiceProvider());
 $app->register(new Silex\Provider\SessionServiceProvider());
 $app->register(new FormServiceProvider());
 $app->register(new Silex\Provider\LocaleServiceProvider());
+$app->register(new CsrfServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => array(
         __DIR__.'/views',
