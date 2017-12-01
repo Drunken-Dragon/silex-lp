@@ -11,11 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints as Assert;
 
 $app->match('/login', function (Request $request) use ($app) {
-    // some default data for when the form is displayed the first time
-    $data = array(
-//        'name' => 'Your name',
-//        'password' => 'Your password',
-    );
 
     $form = $app['form.factory']->createBuilder(FormType::class, $data)
         ->add('name', TextType::class, [
@@ -47,7 +42,7 @@ $app->match('/login', function (Request $request) use ($app) {
 
 $app->get('/', function () use ($app) {
     if (($app['session']->get('is_logged')) === 1) {
-        return $app['twig']->render('index.html.twig');
+        return $app['twig']->render('landing.html.twig');
     } else {
         return $app->redirect('/login');
     }
