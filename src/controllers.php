@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints as Assert;
 
-$app->match('/form', function (Request $request) use ($app) {
+$app->match('/login', function (Request $request) use ($app) {
     // some default data for when the form is displayed the first time
     $data = array(
 //        'name' => 'Your name',
@@ -40,12 +40,9 @@ $app->match('/form', function (Request $request) use ($app) {
         } else {
             return $app->redirect('/login');
         }
-        // redirect somewhere
-//        return $app->redirect('...');
     }
 
-    // display the form
-    return $app['twig']->render('form.twig', array('form' => $form->createView()));
+    return $app['twig']->render('login.html.twig', array('form' => $form->createView()));
 });
 
 $app->get('/', function () use ($app) {
@@ -61,23 +58,6 @@ $app->get('/login', function () use ($app) {
     return $app['twig']->render('login.html.twig');
 })
 ->bind('login');
-
-$app->post('/login', function (Request $request) use ($app) {
-    $name = $request->get('name');
-    $password = $request->get('password');
-    $user = $app['db']->fetchAssoc('SELECT * FROM users WHERE name = ?', [$name]);
-
-    if (password_verify($password, $user['password'])) {
-        if ($app['session']->get('is_logged') != 1) {
-            $app['session']->set('is_logged', 1);
-            $app['session']->set('user', ['name' => $name]);
-
-            return $app->redirect('/');
-        }
-    } else {
-        return $app->redirect('/login');
-    }
-});
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
