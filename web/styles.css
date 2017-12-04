@@ -1,0 +1,295 @@
+.background-image {
+    background: url('https://new.landingi.com/uploads/3bdc07ab6e93c9c38c5a/pictures/13dde2eb83a076cb8d2e68e2a50414a3.jpg') no-repeat fixed top center;
+    z-index: -1 !important;
+    height: 100%;
+    width: 100%;
+    filter: brightness(30%);
+    position: fixed;
+}
+
+.jumbotron {
+    background-color: #fff;
+}
+
+.jumbotron-gray {
+    background-color: #f7f7f7;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+li:before {
+    /*
+    The desired width gets defined in two places: The element width, and background size.
+    The height only gets defined once, in background size.
+    */
+    position: absolute;
+    display: block;
+    content: '\2022'; /* bullet point, for screen readers */
+    text-indent: -999999px; /* move the bullet point out of sight */
+    left: -2.5em;
+    width: 1.4em; /* desired width of the image */
+    height: 1.4em; /* unrelated to image height; this is so it gets snipped */
+    background-size: 1.2em 1.2em;
+    background: url('http://new.landingi.com/uploads/3bdc07ab6e93c9c38c5a/pictures/e0ce68bdeed317145c80e6c8b806ed68.png') no-repeat 0 0.2em;
+}
+
+/*Remove gap between "Last webinars" and "Testimonials" sections*/
+.no-margin-bottom {
+    margin-bottom: 0
+}
+
+.background-blank {
+    background-color: #fff;
+}
+
+.button1 {
+    background: rgba(0, 0, 0, 0) none;
+    border: 4px solid #ffb800;
+    padding: 8px 0;
+    width: 300px;
+    height: 72;
+    font-size: 30px;
+    font-weight: 700;
+    color: #ffb800;
+}
+
+.button1:hover {
+    /*using rgba allows using alpha channel - so colour with a filter effect is possible*/
+    background-color: rgba(242, 242, 242, 0.2);
+    transition-duration: 0.2s;
+}
+
+.button2 {
+    background: transparent none;
+    border: 3px solid #ffb800;
+    padding: 8px 0;
+    width: 300px;
+    height: 72px;
+    font-size: 25px;
+    font-weight: 700;
+    color: #ffb800;
+    margin-bottom: 100px;
+}
+
+.button2:hover {
+    background-color: rgba(242, 242, 242, 0.2);
+    transition-duration: 0.2s;
+}
+
+.h1 {
+    color: #ffb800;
+    font-size: 75px;
+    font-weight: 700;
+}
+
+.h2 {
+    color: #ffb800;
+    font-size: 60px;
+    font-weight: 700;
+    padding-top: 140px;
+}
+
+.h4 {
+    font-weight: 700;
+    color: #000;
+}
+
+.h4.white {
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.h5 {
+    color: #fff;
+    padding-top: 40px;
+}
+
+.h5.black {
+    color: #000;
+}
+
+.h6 {
+    color: #fff;
+    padding-top: 15px;
+    padding-bottom: 50px;
+}
+
+.auxiliary-heading {
+    color: #ffb800;
+    margin-bottom: 40px;
+}
+
+.vertical-align {
+    margin-top: 10%;
+    margin-bottom: 0;
+}
+
+.header-top {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0;
+    left: 0;
+    font-style: normal;
+    color: #fff;
+    padding-top: 130px !important;
+    font-family: 'Arial', sans-serif;
+}
+
+.header-bottom {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0;
+    left: 0;
+    font-style: normal;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+.col-sm-8.white-background {
+    color: #ababab;
+    background-color: #fff;
+    left: -50px;
+    height: 320px;
+    padding: 40px;
+    font-size: 14px;
+    text-align: justify;
+}
+
+.about-me {
+    padding-bottom: 90px;
+}
+
+.form-control.ghost {
+    width: 300px;
+    background: transparent none;
+    border: 3px solid #fff;
+    height: 50px;
+}
+
+.testimonials {
+    margin-top: 70px;
+}
+
+/*styles changing form input palceholder color*/
+
+.form-control::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #fff;
+}
+
+.form-control:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #fff;
+    opacity: 1;
+}
+
+.form-control::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #fff;
+    opacity: 1;
+}
+
+.form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #fff;
+}
+
+.form-control::-ms-input-placeholder { /* Microsoft Edge */
+    color: #909;
+}
+
+.player-left {
+    margin-right: 10px;
+    width: 470px;
+    height: 350px;
+}
+
+.player-right {
+    margin-left: 10px;
+    width: 470px;
+    height: 350px;
+}
+
+.background-box {
+    background: #fff url("http://new.landingi.com/uploads/3bdc07ab6e93c9c38c5a/pictures/3aba3179b5d2032c54421a99bc7b7ba5.png") no-repeat top right;
+    padding-left: 30px;
+    padding-bottom: 25px;
+    padding-right: 30px;
+    text-align: justify;
+    color: #ababab;
+    margin-bottom: 30px;
+}
+
+/*Responsive styles*/
+
+@media screen and (max-width: 768px) {
+    .player-left {
+        width: 320px;
+        height: 236px;
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+
+    .player-right {
+        width: 320px;
+        height: 236px;
+        margin-top: 10px;
+        margin-left: 0;
+    }
+
+    .col-sm-8.white-background {
+        color: #ababab;
+        background-color: #fff;
+        padding: 40px;
+        font-size: 14px;
+        text-align: justify;
+        left: auto;
+        height: auto;
+    }
+}
+
+/*Counter styles*/
+
+.countdown {
+    margin-top: 30px;
+    margin-bottom: 70px;
+    text-align: center;
+    color: #000;
+}
+
+.countdown-label {
+    font-size: 14px;
+    background-color: #fff;
+    display: block;
+    width: 80px;
+    margin: auto;
+    padding-bottom: 10px;
+}
+
+.countdown-number {
+    font-size: 48px;
+    line-height: 1;
+    font-weight: 700;
+    background-color: #fff;
+    display: block;
+    width: 80px;
+    padding: 10px;
+}
+
+.countdown-item {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+@media (max-width: 991px) {
+    .countdown-number {
+        font-size: 30px;
+    }
+}
