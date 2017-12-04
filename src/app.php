@@ -49,4 +49,6 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
     return $twig;
 });
 
+$app->mount('/login', include "login_controller.php");
+
 return $app;
