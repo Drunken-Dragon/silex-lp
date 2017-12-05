@@ -53,4 +53,8 @@ $app['auth.controller'] = function () use ($app) {
     return new \Controller\AuthController($app['twig']);
 };
 
+$app['landing.controller'] = function () use ($app) {
+    return new \Controller\LandingController($app, $app['session'], $app['twig']);
+};
+
 return $app;

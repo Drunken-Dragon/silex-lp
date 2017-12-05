@@ -40,14 +40,7 @@ $app->match('/login', function (Request $request) use ($app) {
     return $app['twig']->render('login.html.twig', array('form' => $form->createView()));
 });
 
-$app->get('/', function () use ($app) {
-    if (($app['session']->get('is_logged')) === 1) {
-        return $app['twig']->render('landing.html.twig');
-    } else {
-        return $app->redirect('/login');
-    }
-})
-->bind('index');
+$app->get('/', 'landing.controller:verifyAccess');
 
 $app->get('/login', 'auth.controller:loginAction');
 
