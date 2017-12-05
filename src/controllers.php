@@ -13,10 +13,25 @@ use Symfony\Component\Validator\Constraints as Assert;
 $app->match('/login', function (Request $request) use ($app) {
 
     $form = $app['form.factory']->createBuilder(FormType::class, $data)
-        ->add('name', TextType::class, [
-            'constraints' => [new Assert\NotBlank()]
-        ])
-        ->add('password', \Symfony\Component\Form\Extension\Core\Type\PasswordType::class, [])
+        ->add(
+            'name',
+            TextType::class,
+            [
+            'constraints' => [
+                new Assert\NotBlank()
+            ],
+            'label' => false,
+            'attr' => ['placeholder' => 'User'],
+            ]
+        )
+        ->add(
+            'password',
+            \Symfony\Component\Form\Extension\Core\Type\PasswordType::class,
+            [
+                'label' => false,
+                'attr' => ['placeholder' => 'Password'],
+            ]
+        )
         ->getForm();
 
     $form->handleRequest($request);
