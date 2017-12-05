@@ -49,10 +49,7 @@ $app->get('/', function () use ($app) {
 })
 ->bind('index');
 
-//$app->get('/login', function () use ($app) {
-//    return $app['twig']->render('login.html.twig');
-//})
-//->bind('login');
+$app->get('/login', 'auth.controller:loginAction');
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {

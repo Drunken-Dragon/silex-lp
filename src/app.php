@@ -9,7 +9,7 @@ use Silex\Provider\FormServiceProvider;
 use Silex\Provider\CsrfServiceProvider;
 
 $app = new Application();
-$app->register(new ServiceControllerServiceProvider());
+$app->register(new Silex\Provider\ServiceControllerServiceProvider());
 $app->register(new AssetServiceProvider());
 $app->register(new TwigServiceProvider());
 $app->register(new HttpFragmentServiceProvider());
@@ -49,6 +49,8 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
     return $twig;
 });
 
-$app->mount('/login', include "login_controller.php");
+$app['auth.controller'] = function () use ($app) {
+    return new \Controller\AuthController($app['twig']);
+};
 
 return $app;
