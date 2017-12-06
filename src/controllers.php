@@ -13,10 +13,25 @@ use Symfony\Component\Validator\Constraints as Assert;
 $app->match('/login', function (Request $request) use ($app) {
 
     $form = $app['form.factory']->createBuilder(FormType::class, $data)
-        ->add('name', TextType::class, [
-            'constraints' => [new Assert\NotBlank()]
-        ])
-        ->add('password', \Symfony\Component\Form\Extension\Core\Type\PasswordType::class, [])
+        ->add(
+            'name',
+            TextType::class,
+            [
+            'constraints' => [
+                new Assert\NotBlank()
+            ],
+            'label' => false,
+            'attr' => ['placeholder' => 'User'],
+            ]
+        )
+        ->add(
+            'password',
+            \Symfony\Component\Form\Extension\Core\Type\PasswordType::class,
+            [
+                'label' => false,
+                'attr' => ['placeholder' => 'Password'],
+            ]
+        )
         ->getForm();
 
     $form->handleRequest($request);
@@ -40,19 +55,9 @@ $app->match('/login', function (Request $request) use ($app) {
     return $app['twig']->render('login.html.twig', array('form' => $form->createView()));
 });
 
-$app->get('/', function () use ($app) {
-    if (($app['session']->get('is_logged')) === 1) {
-        return $app['twig']->render('landing.html.twig');
-    } else {
-        return $app->redirect('/login');
-    }
-})
-->bind('index');
+$app->get('/', 'landing.controller:verifyAccess');
 
-$app->get('/login', function () use ($app) {
-    return $app['twig']->render('login.html.twig');
-})
-->bind('login');
+$app->get('/login', 'auth.controller:loginAction');
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
