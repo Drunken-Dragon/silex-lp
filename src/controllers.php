@@ -10,29 +10,29 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints as Assert;
 
-$app->match('/login', function (Request $request) use ($app) {
-
-    $form = $app['form.factory']->createBuilder(FormType::class, $data)
-        ->add(
-            'name',
-            TextType::class,
-            [
-            'constraints' => [
-                new Assert\NotBlank()
-            ],
-            'label' => false,
-            'attr' => ['placeholder' => 'User'],
-            ]
-        )
-        ->add(
-            'password',
-            \Symfony\Component\Form\Extension\Core\Type\PasswordType::class,
-            [
-                'label' => false,
-                'attr' => ['placeholder' => 'Password'],
-            ]
-        )
-        ->getForm();
+//$app->match('/login', function (Request $request) use ($app) {
+//
+//    $form = $app['form.factory']->createBuilder(FormType::class, $data)
+//        ->add(
+//            'name',
+//            TextType::class,
+//            [
+//            'constraints' => [
+//                new Assert\NotBlank()
+//            ],
+//            'label' => false,
+//            'attr' => ['placeholder' => 'User'],
+//            ]
+//        )
+//        ->add(
+//            'password',
+//            \Symfony\Component\Form\Extension\Core\Type\PasswordType::class,
+//            [
+//                'label' => false,
+//                'attr' => ['placeholder' => 'Password'],
+//            ]
+//        )
+//        ->getForm();
 
 //    $form->handleRequest($request);
 //
@@ -52,9 +52,9 @@ $app->match('/login', function (Request $request) use ($app) {
 //        }
 //    }
 
-    return $app['twig']->render('login.html.twig', array('form' => $form->createView()));
-
-});
+//    return $app['twig']->render('login.html.twig', array('form' => $form->createView()));
+//
+//});
 
 $app->get('/', 'landing.controller:verifyAccess');
 

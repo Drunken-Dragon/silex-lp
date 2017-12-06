@@ -29,7 +29,6 @@ class AuthController
                 return $app->redirect('/login');
             }
         }
-
         return $this->twig->render('login.html.twig', array('form' => $form->createView()));
     }
 }

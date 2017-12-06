@@ -12,15 +12,13 @@ class LoginFormController
 {
     private $form;
     private $app;
-    private $formFactory;
 
     public function __construct($formFactory)
     {
-//        $this->form = $form;
-//        $this->app = $app;
-        $this->formFactory = $formFactory;
+        $this->form = $form;
+        $this->app = $app;
 
-        $this->form = $app->formFactory->createBuilder(FormType::class, $data)
+        $this->form = $app['form.factory']->createBuilder(FormType::class, $data)
             ->add(
                 'name',
                 TextType::class,
