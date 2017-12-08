@@ -15,8 +15,8 @@ class LoginFormController
 
     public function __construct($formFactory)
     {
-        $this->form = $form;
-        $this->app = $app;
+//        $this->form = $formFactory->;
+//        $this->app = $app;
 
         $this->form = $app['form.factory']->createBuilder(FormType::class, $data)
             ->add(
