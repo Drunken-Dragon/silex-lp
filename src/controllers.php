@@ -13,7 +13,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 $app->get('/', 'landing.controller:verifyAccess');
 
 $app->get('/login', 'auth.controller:displayForm');
-//$app->post('/login', 'auth.controller:loginAction');
+
+$app->post('/login', 'auth.controller:loginAction');
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {

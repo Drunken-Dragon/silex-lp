@@ -50,7 +50,7 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
 });
 
 $app['auth.controller'] = function () use ($app) {
-    return new \Controller\AuthController($app);
+    return new \Controller\AuthController($app, $db);
 };
 
 $app['landing.controller'] = function () use ($app) {
