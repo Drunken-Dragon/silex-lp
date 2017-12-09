@@ -8,18 +8,21 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class AuthController
 {
     private $app;
-    private $form;
-    private $twig;
+//    private $form;
+//    private $twig;
     private $db;
+    private $session;
 
-    public function __construct($app, $db)
+    public function __construct($app, $db, $session)
     {
         $this->db = $app['db'];
+        $this->session = $app['session'];
         $this->twig = $app['twig'];
         $this->form = $app['form.factory']->createBuilder(FormType::class, $data)
             ->add(
@@ -53,9 +56,9 @@ class AuthController
 
     public function loginAction(Request $request)
     {
-
         $this->form->handleRequest($request);
         $db = $this->db;
+        $session = $this->session;
 
         if ($this->form->isValid()) {
             $data = $this->form->getData();
@@ -63,19 +66,21 @@ class AuthController
             $user = $db->fetchAll('SELECT * FROM users WHERE name = ?', [$data['name']]);
 
             if (password_verify($data['password'], $user[0]['password'])) {
-                dump($app['session']);
-                die();
-                if ($app['session']->get('is_logged') != 1) {
-                    $app['session']->set('is_logged', 1);
-                    $app['session']->set('user', ['name' => $data['name']]);
+                if ($this->session->get('is_logged') != 1) {
+                    $this->session->set('is_logged', 1);
+                    $this->session->set('user', ['name' => $data['name']]);
 
-                    return $app->redirect('/');
+//                    dump($session);
+//                    die();
+
+//                    return $app->redirect('/');
+                    return $this->twig->render('landing.html.twig');
                 }
             } else {
                 return $app->redirect('/login');
             }
         }
-//        return $this->twig->render('login.html.twig', array('form' => $form->createView()));
-        return $app->redirect('/login');
+        return $this->twig->render('login.html.twig', array('form' => $form->createView()));
+//        return $app->redirect('/login');
     }
 }
