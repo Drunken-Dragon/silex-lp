@@ -18,8 +18,8 @@ class AuthController
 
     public function __construct($app, $db, $session)
     {
-        $this->db = $app['db'];
-        $this->session = $app['session'];
+        $this->db = $db;
+        $this->session = $session;
         $this->twig = $app['twig'];
         $this->form = $app['form.factory']->createBuilder(FormType::class, $data)
             ->add(
@@ -58,7 +58,6 @@ class AuthController
 
         if ($this->form->isValid()) {
             $data = $this->form->getData();
-
             $user = $db->fetchAll('SELECT * FROM users WHERE name = ?', [$data['name']]);
 
             if (password_verify($data['password'], $user[0]['password'])) {
@@ -72,6 +71,7 @@ class AuthController
                 return $app->redirect('/login');
             }
         }
+
         return $this->twig->render('login.html.twig', array('form' => $form->createView()));
     }
 }

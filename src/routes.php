@@ -11,16 +11,12 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints as Assert;
 
 $app->get('/', 'landing.controller:verifyAccess');
-
 $app->get('/login', 'auth.controller:displayForm');
-
 $app->post('/login', 'auth.controller:loginAction');
-
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
         return new Response($e->getMessage());
     }
-
     $templates = array(
         'errors/'.$code.'.html.twig',
         'errors/'.substr($code, 0, 2).'x.html.twig',

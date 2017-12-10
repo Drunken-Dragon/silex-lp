@@ -49,11 +49,11 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
 });
 
 $app['auth.controller'] = function () use ($app) {
-    return new \Controller\AuthController($app, $db, $session);
+    return new \Controller\AuthController($app, $app['db'], $app['session']);
 };
 
 $app['landing.controller'] = function () use ($app) {
-    return new \Controller\LandingController($app, $session, $twig);
+    return new \Controller\LandingController($app, $app['session'], $app['twig']);
 };
 
 return $app;

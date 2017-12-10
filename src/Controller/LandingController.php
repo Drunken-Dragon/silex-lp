@@ -11,8 +11,8 @@ class LandingController
     public function __construct($app, $session, $twig)
     {
         $this->app = $app;
-        $this->session = $app['session'];
-        $this->twig = $app['twig'];
+        $this->session = $session;
+        $this->twig = $twig;
     }
 
     public function verifyAccess()
