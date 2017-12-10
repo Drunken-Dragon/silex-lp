@@ -33,15 +33,14 @@ $app->register(new Silex\Provider\TranslationServiceProvider(), [
 $app->register(new \Silex\Provider\DoctrineServiceProvider(), [
     'db.options' => [
         'driver' => 'pdo_mysql',
-        'dbname' => 'landing_form_2',
-        'host' => 'localhost',
-        'user' => 'root',
-        'password' => 'root',
+        'dbname' => getenv('DB_NAME'),
+        'host' => getenv('DB_HOST'),
+        'user' => getenv('DB_USERNAME'),
+        'password' => getenv('DB_PASSWORD'),
         'charset' => 'UTF8',
     ]
 ]);
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
-//    $twig->addExtension(new \Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapIconExtension);
     $twig->addExtension(new \Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension);
     $twig->addExtension(new \Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapBadgeExtension);
     $twig->addExtension(new \Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension);
@@ -50,7 +49,7 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
 });
 
 $app['auth.controller'] = function () use ($app) {
-    return new \Controller\AuthController($app['twig']);
+    return new \Controller\AuthController($app, $app['db'], $app['session']);
 };
 
 $app['landing.controller'] = function () use ($app) {
