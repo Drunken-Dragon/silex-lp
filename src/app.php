@@ -7,6 +7,7 @@ use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\CsrfServiceProvider;
+use Symfony\Component\Dotenv\Dotenv;
 
 $app = new Application();
 $app->register(new Silex\Provider\ServiceControllerServiceProvider());
@@ -30,6 +31,8 @@ $app->register(new Silex\Provider\TranslationServiceProvider(), [
 $app->register(new Silex\Provider\TranslationServiceProvider(), [
     'translator.domains' => [],
 ]);
+$dotenv = new Dotenv();
+$dotenv->load(__DIR__.'/../.env');
 $app->register(new \Silex\Provider\DoctrineServiceProvider(), [
     'db.options' => [
         'driver' => 'pdo_mysql',
