@@ -33,10 +33,10 @@ $app->register(new Silex\Provider\TranslationServiceProvider(), [
 $app->register(new \Silex\Provider\DoctrineServiceProvider(), [
     'db.options' => [
         'driver' => 'pdo_mysql',
-        'dbname' => 'landing_form_2',
-        'host' => 'localhost',
-        'user' => 'root',
-        'password' => 'root',
+        'dbname' => getenv('DB_NAME'),
+        'host' => getenv('DB_HOST'),
+        'user' => getenv('DB_USERNAME'),
+        'password' => getenv('DB_PASSWORD'),
         'charset' => 'UTF8',
     ]
 ]);
