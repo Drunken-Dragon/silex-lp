@@ -10,12 +10,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-
 class AuthController
 {
     private $app;
-//    private $form;
-//    private $twig;
     private $db;
     private $session;
 
@@ -53,7 +50,6 @@ class AuthController
             'form' => $this->form->createView()
         ]);
     }
-
     public function loginAction(Request $request)
     {
         $this->form->handleRequest($request);
@@ -70,10 +66,6 @@ class AuthController
                     $this->session->set('is_logged', 1);
                     $this->session->set('user', ['name' => $data['name']]);
 
-//                    dump($session);
-//                    die();
-
-//                    return $app->redirect('/');
                     return $this->twig->render('landing.html.twig');
                 }
             } else {
@@ -81,6 +73,5 @@ class AuthController
             }
         }
         return $this->twig->render('login.html.twig', array('form' => $form->createView()));
-//        return $app->redirect('/login');
     }
 }

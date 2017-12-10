@@ -41,7 +41,6 @@ $app->register(new \Silex\Provider\DoctrineServiceProvider(), [
     ]
 ]);
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
-//    $twig->addExtension(new \Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapIconExtension);
     $twig->addExtension(new \Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension);
     $twig->addExtension(new \Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapBadgeExtension);
     $twig->addExtension(new \Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension);
