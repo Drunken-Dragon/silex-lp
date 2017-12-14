@@ -31,6 +31,7 @@ $app->register(new Silex\Provider\TranslationServiceProvider(), [
 $app->register(new Silex\Provider\TranslationServiceProvider(), [
     'translator.domains' => [],
 ]);
+
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__.'/../.env');
 $app->register(new \Silex\Provider\DoctrineServiceProvider(), [
@@ -50,6 +51,12 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
 
     return $twig;
 });
+
+$app['login.controller'] = function () use ($app) {
+    echo get_class($app['twig']);
+    die();
+    return new \Controller\LoginController($app);
+};
 
 $app['auth.controller'] = function () use ($app) {
     return new \Controller\AuthController($app, $app['db'], $app['session']);

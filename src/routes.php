@@ -11,8 +11,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Validator\Constraints as Assert;
 
 $app->get('/', 'landing.controller:verifyAccess');
-$app->get('/login', 'auth.controller:displayForm');
-$app->post('/login', 'auth.controller:loginAction');
+$app->get('/login', 'login.controller:indexAction');
+//$app->get('/login', 'auth.controller:displayForm');
+//$app->post('/login', 'auth.controller:loginAction');
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
         return new Response($e->getMessage());
