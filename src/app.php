@@ -53,8 +53,8 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
 });
 
 $app['login.controller'] = function () use ($app) {
-    echo get_class($app['twig']);
-    die();
+//    echo get_class($app['twig']);
+//    die();
     return new \Controller\LoginController($app);
 };
 
@@ -64,6 +64,10 @@ $app['auth.controller'] = function () use ($app) {
 
 $app['landing.controller'] = function () use ($app) {
     return new \Controller\LandingController($app, $app['session'], $app['twig']);
+};
+
+$app['abstract.controller'] = function () use ($app) {
+    return new \Controller\AbstractController($app);
 };
 
 return $app;
