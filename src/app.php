@@ -34,13 +34,23 @@ $app->register(new Silex\Provider\TranslationServiceProvider(), [
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__.'/../.env');
 $app->register(new \Silex\Provider\DoctrineServiceProvider(), [
-    'db.options' => [
-        'driver' => 'pdo_mysql',
-        'dbname' => getenv('DB_NAME'),
-        'host' => getenv('DB_HOST'),
-        'user' => getenv('DB_USERNAME'),
-        'password' => getenv('DB_PASSWORD'),
-        'charset' => 'UTF8',
+    'dbs.options' => [
+        'users' => [
+            'driver' => 'pdo_mysql',
+            'dbname' => getenv('DB_NAME'),
+            'host' => getenv('DB_HOST'),
+            'user' => getenv('DB_USERNAME'),
+            'password' => getenv('DB_PASSWORD'),
+            'charset' => 'UTF8'
+        ],
+        'form_input' => [
+            'driver' => 'pdo_mysql',
+            'dbname' => getenv('DB_NAME_LEAD'),
+            'host' => getenv('DB_HOST'),
+            'user' => getenv('DB_USERNAME'),
+            'password' => getenv('DB_PASSWORD'),
+            'charset' => 'UTF8'
+        ]
     ]
 ]);
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
