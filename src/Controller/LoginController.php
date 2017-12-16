@@ -27,7 +27,7 @@ class LoginController extends AbstractController
                     $this->getSession()->set('is_logged', 1);
                     $this->getSession()->set('user', ['name' => $data->name]);
 
-                    return $this->render('landing.html.twig');
+                    return $this->app->redirect('/');
                 }
             } else {
                 return $this->render('login.html.twig', ['form' => $form->createView()]);
