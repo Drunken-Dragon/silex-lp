@@ -146,19 +146,22 @@
                 <div class="row justify-content-center">
                     <form class="" action="/form" method="post" accept-charset="utf8">
                         <div class="form-group">
-                            <label for="nameSurname"></label>
-                            <input type="text" class="form-control ghost rounded-0" id="nameSurname"
-                                   placeholder="Name and Surname" name="name">
-                            <label for="email"></label>
-                            <input type="text" class="form-control ghost rounded-0" id="email" placeholder="E-mail address"
-                                   name="email">
-                            <label for="phone"></label>
-                            <input type="text" class="form-control ghost rounded-0" id="phone" placeholder="Phone number"
-                                   name="phone">
-                            <input type="hidden" name="csrf" value="<?= $csrf ?>">
-                        </div>
-                        <div class="row justify-content-center">
-                            <button type="submit" name="submit" class="button2">REGISTER NOW</button>
+                            {{ form_start(form) }}
+                            {{ form_widget(form) }}
+                            {{ form_end(form) }}
+                            {#<label for="nameSurname"></label>#}
+                            {#<input type="text" class="form-control ghost rounded-0" id="nameSurname"#}
+                                   {#placeholder="Name and Surname" name="name">#}
+                            {#<label for="email"></label>#}
+                            {#<input type="text" class="form-control ghost rounded-0" id="email" placeholder="E-mail address"#}
+                                   {#name="email">#}
+                            {#<label for="phone"></label>#}
+                            {#<input type="text" class="form-control ghost rounded-0" id="phone" placeholder="Phone number"#}
+                                   {#name="phone">#}
+                            {#<input type="hidden" name="csrf" value="<?= $csrf ?>">#}
+                        {#</div>#}
+                        {#<div class="row justify-content-center">#}
+                            {#<button type="submit" name="submit" class="button2">REGISTER NOW</button>#}
                         </div>
                     </form>
                 </div>
