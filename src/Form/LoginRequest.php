@@ -8,7 +8,7 @@ class LoginRequest
 {
     /**
      * @Assert\NotBlank()
-     * @Assert\Length(min="3, max="20")
+     * @Assert\Length(min="3", max="20")
      */
     public $login;
 

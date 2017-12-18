@@ -21,8 +21,8 @@ class LeadController extends AbstractController
 
         if ($leadForm->isSubmitted() && $leadForm->isValid()) {
             $db->executeUpdate("INSERT INTO form_input(name, email, phone) VALUES('$leadData->name', '$leadData->email', '$leadData->phone')");
-
-            return '<h1>Records added</h1>';
         }
+
+        return '<h1>Records added</h1><br>';
     }
 }
