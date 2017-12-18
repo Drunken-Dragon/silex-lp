@@ -63,14 +63,14 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
 $app['login.controller'] = function () use ($app) {
     return new \Controller\LoginController($app);
 };
-$app['auth.controller'] = function () use ($app) {
-    return new \Controller\AuthController($app, $app['db'], $app['session']);
-};
 $app['landing.controller'] = function () use ($app) {
     return new \Controller\LandingController($app, $app['session'], $app['twig']);
 };
 $app['abstract.controller'] = function () use ($app) {
     return new \Controller\AbstractController($app);
+};
+$app['lead.controller'] = function () use ($app) {
+    return new \Controller\LeadController($app);
 };
 
 return $app;
