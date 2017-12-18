@@ -34,13 +34,23 @@ $app->register(new Silex\Provider\TranslationServiceProvider(), [
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__.'/../.env');
 $app->register(new \Silex\Provider\DoctrineServiceProvider(), [
-    'db.options' => [
-        'driver' => 'pdo_mysql',
-        'dbname' => getenv('DB_NAME'),
-        'host' => getenv('DB_HOST'),
-        'user' => getenv('DB_USERNAME'),
-        'password' => getenv('DB_PASSWORD'),
-        'charset' => 'UTF8',
+    'dbs.options' => [
+        'users' => [
+            'driver' => 'pdo_mysql',
+            'dbname' => getenv('DB_NAME'),
+            'host' => getenv('DB_HOST'),
+            'user' => getenv('DB_USERNAME'),
+            'password' => getenv('DB_PASSWORD'),
+            'charset' => 'UTF8'
+        ],
+        'form_input' => [
+            'driver' => 'pdo_mysql',
+            'dbname' => getenv('DB_NAME_LEAD'),
+            'host' => getenv('DB_HOST'),
+            'user' => getenv('DB_USERNAME'),
+            'password' => getenv('DB_PASSWORD'),
+            'charset' => 'UTF8'
+        ]
     ]
 ]);
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
@@ -53,14 +63,14 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
 $app['login.controller'] = function () use ($app) {
     return new \Controller\LoginController($app);
 };
-$app['auth.controller'] = function () use ($app) {
-    return new \Controller\AuthController($app, $app['db'], $app['session']);
-};
 $app['landing.controller'] = function () use ($app) {
     return new \Controller\LandingController($app, $app['session'], $app['twig']);
 };
 $app['abstract.controller'] = function () use ($app) {
     return new \Controller\AbstractController($app);
+};
+$app['lead.controller'] = function () use ($app) {
+    return new \Controller\LeadController($app);
 };
 
 return $app;

@@ -67,7 +67,7 @@ li:before {
     transition-duration: 0.2s;
 }
 
-.button2 {
+#lead_submit {
     background: transparent none;
     border: 3px solid #ffb800;
     padding: 8px 0;
@@ -77,9 +77,11 @@ li:before {
     font-weight: 700;
     color: #ffb800;
     margin-bottom: 100px;
+    margin-top: 15px;
+    margin-left: 4px;
 }
 
-.button2:hover {
+#lead_submit:hover {
     background-color: rgba(242, 242, 242, 0.2);
     transition-duration: 0.2s;
 }
@@ -170,11 +172,14 @@ li:before {
     padding-bottom: 90px;
 }
 
-.form-control.ghost {
+input {
     width: 300px;
     background: transparent none;
     border: 3px solid #fff;
     height: 50px;
+    margin: 4px;
+    padding-left: 10px;
+    color: #fff;
 }
 
 .testimonials {
@@ -183,25 +188,25 @@ li:before {
 
 /*styles changing form input palceholder color*/
 
-.form-control::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color: #fff;
 }
 
-.form-control:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: #fff;
-    opacity: 1;
-}
-
-.form-control::-moz-placeholder { /* Mozilla Firefox 19+ */
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
     color: #fff;
     opacity: 1;
 }
 
-.form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #fff;
+    opacity: 1;
+}
+
+input:-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: #fff;
 }
 
-.form-control::-ms-input-placeholder { /* Microsoft Edge */
+input:-ms-input-placeholder { /* Microsoft Edge */
     color: #909;
 }
 

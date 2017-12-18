@@ -4,16 +4,22 @@ namespace Form;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-class LoginRequest
+class LeadValidation
 {
     /**
      * @Assert\NotBlank()
      * @Assert\Length(min="3", max="20")
      */
-    public $login;
+    public $name;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Email()
+     */
+    public $email;
 
     /**
      * @Assert\NotBlank()
      */
-    public $password;
+    public $phone;
 }
