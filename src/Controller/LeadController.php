@@ -23,6 +23,10 @@ class LeadController extends AbstractController
             $db->executeUpdate("INSERT INTO form_input(name, email, phone) VALUES('$leadData->name', '$leadData->email', '$leadData->phone')");
         }
 
-        return '<h1>Records added</h1><br>';
+        return $this->render('thankyou.html.twig', [
+            'name' => $leadData->name,
+            'email' => $leadData->email,
+            'phone' => $leadData->phone
+        ]);
     }
 }
