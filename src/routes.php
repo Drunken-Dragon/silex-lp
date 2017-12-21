@@ -6,6 +6,8 @@ use Symfony\Component\HttpFoundation\Response;
 $app->get('/', 'landing.controller:verifyAccess');
 $app->post('/form', 'lead.controller:submitLead');
 $app->match('/login', 'login.controller:indexAction');
+$app->match('/logout', 'login.controller:logout');
+
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
         return new Response($e->getMessage());
