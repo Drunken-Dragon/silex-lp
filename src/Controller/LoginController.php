@@ -36,4 +36,10 @@ class LoginController extends AbstractController
 
         return $this->render('login.html.twig', ['form' => $form->createView()]);
     }
+
+    public function logout()
+    {
+        $this->getSession()->clear();
+        return $this->app->redirect('/');
+    }
 }
