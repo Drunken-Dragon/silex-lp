@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8e878c5befbfed27a2f788745a8328cd",
+    "content-hash": "311e79c65aed850ea89698a312bf2bd0",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -536,6 +536,53 @@
                 "parser"
             ],
             "time": "2014-09-09T13:34:57+00:00"
+        },
+        {
+            "name": "getresponse/getresponse",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GetResponse/getresponse-api-php.git",
+                "reference": "a33b1081eeb7c0937e46383344068a2a6e847ce5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GetResponse/getresponse-api-php/zipball/a33b1081eeb7c0937e46383344068a2a6e847ce5",
+                "reference": "a33b1081eeb7c0937e46383344068a2a6e847ce5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/GetResponseAPI3.class.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pawel Maslak",
+                    "email": "pawel.maslak@getresponse.com"
+                },
+                {
+                    "name": "Grzegorz Struczynski",
+                    "email": "grzegorz.struczynski@getresponse.com"
+                }
+            ],
+            "description": "GetResponse API v3 client library.",
+            "homepage": "https://github.com/GetResponse/getresponse-api-php",
+            "keywords": [
+                "api",
+                "email",
+                "getresponse"
+            ],
+            "time": "2015-11-25T12:38:33+00:00"
         },
         {
             "name": "monolog/monolog",
