@@ -24,10 +24,10 @@ class LeadController extends AbstractController
             return 'Please check your input data';
         }
 
-//        $db->executeUpdate("
-//            INSERT INTO form_input(name, email, phone) 
-//            VALUES('$leadData->name', '$leadData->email', '$leadData->phone')
-//        ");
+        $db->executeUpdate("
+            INSERT INTO form_input(name, email, phone) 
+            VALUES('$leadData->name', '$leadData->email', '$leadData->phone')
+        ");
 
         $gr = $getResponse->addContact([
             'name' => $leadData->name,
